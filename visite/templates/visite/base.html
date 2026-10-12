@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}GestVisite{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-100 font-sans antialiased">
+
+    <div class="flex min-h-screen">
+        <aside class="w-64 bg-blue-900 text-white flex-shrink-0 hidden md:flex flex-col">
+            <div class="p-6 border-b border-slate-800">
+                <h2 class="text-xl font-bold flex items-center gap-2">
+                    <i data-lucide="shield-check" class="text-blue-400"></i> GestVisite
+                </h2>
+            </div>
+            <nav class="space-y-2">
+    <a href="{% url 'dashboard' %}" class="flex items-center gap-3 p-4 rounded-2xl hover:bg-blue-50 text-light-600 hover:text-blue-600 transition">
+        <i data-lucide="layout-dashboard"></i> <span>Tableau de bord</span>
+    </a>
+    
+    <a href="{% url 'liste_visiteurs' %}" class="flex items-center gap-3 p-4 rounded-2xl hover:bg-blue-50 text-light-600 hover:text-blue-600 transition">
+        <i data-lucide="users"></i> <span>Tous les Visiteurs</span>
+    </a>
+    
+    <a href="{% url 'historique' %}" class="flex items-center gap-3 p-4 rounded-2xl hover:bg-blue-50 text-light-600 hover:text-blue-600 transition">
+        <i data-lucide="history"></i> <span>Historique</span>
+    </a>
+</nav>
+            
+        </aside>
+
+        <main class="flex-1 flex flex-col min-w-0">
+            <header class="bg-white shadow-sm h-16 flex items-center justify-between px-8">
+                <div class="text-sm text-gray-500">
+                    Bienvenue, <strong>SaliouDianBusiness</strong>
+                </div>
+              
+            </header>
+
+            <div class="p-8">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
