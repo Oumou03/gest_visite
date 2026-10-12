@@ -1,0 +1,14 @@
+name: Deploiement Continu Django sans Interruption
+
+on:
+  push:
+    branches: [main]
+
+concurrency: deploy-prod
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, srv-glpi]
+    steps:
+      - name: Executer la mise a jour automatique
+        run: /opt/deploy/deploy.sh main
