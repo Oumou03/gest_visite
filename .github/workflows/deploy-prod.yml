@@ -10,5 +10,11 @@ jobs:
   deploy:
     runs-on: [self-hosted, srv-glpi]
     steps:
+      - name: Nettoyage et Force de la bonne URL de depot
+        run: |
+          sudo sed -i 's|REPO=.*|REPO="https://github.com"|g' /opt/deploy/deploy.sh
+          sudo chmod +x /opt/deploy/deploy.sh
+
       - name: Executer la mise a jour automatique
         run: /opt/deploy/deploy.sh main
+
